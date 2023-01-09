@@ -9,11 +9,27 @@ This template should help get you started developing with Vue 3 in Vite.
 ## Customize configuration
 
 See [Vite Configuration Reference](https://vitejs.dev/config/).
+## Creating The Project 
+```sh
+npm init vue@latest
+no 
+no
+yes *
+```
+## install extensions
+Prettier - Code formatter v9.10.3 And
+ESLint v2.2.6
+## in side settings.json
+"editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  }
 
 ## Project Setup
 
 ```sh
 npm install
+
 ```
 
 ### Compile and Hot-Reload for Development
@@ -55,3 +71,6 @@ npm run test:e2e
 ```sh
 npm run lint
 ```
+
+
+
