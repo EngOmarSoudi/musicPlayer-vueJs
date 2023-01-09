@@ -29,7 +29,8 @@ ESLint v2.2.6
 
 ```sh
 npm install
-
+npm i -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
 ```
 
 ### Compile and Hot-Reload for Development
