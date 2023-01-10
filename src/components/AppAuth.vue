@@ -28,7 +28,7 @@
             <!-- Modal Close Button -->
             <div
               class="modal-close cursor-pointer z-50"
-              @click="isOpen = false"
+              @click="modalVisibility = false"
             >
               <i class="fas fa-times"></i>
             </div>
@@ -160,9 +160,12 @@ import { mapState, mapWritableState } from "pinia";
 import useModalStore from "@/stores/modal";
 export default {
   name: "AppAuth",
-  computed: {
+  computed: {// mapState is used to map a state that can't be changed
     ...mapState(useModalStore, ["hiddenClass"]),
-    ...mapWritableState(useModalStore, ["isOpen"]),
+    ...mapWritableState(useModalStore, {
+      modalVisibility: "isOpen",
+    }), // mapWritableState is used to map a state that can be changed 
+
   },
 };
 </script>
