@@ -1,9 +1,9 @@
-import { defineStore } from "pinia";
-export default defineStore("modal", {
-  state: () => ({ isOpen: false }),
+import { defineStore } from "pinia";// Import the defineStore function
+export default defineStore("modal", {// Define a store with the name "modal"
+  state: () => ({ isOpen: false }), // This is a reactive property
   getters: {
-    hiddenClass(state) {
-      return !state.isOpen ? "hidden" : "";
+    hiddenClass(state) {// This is a computed property
+      return !state.isOpen ? "hidden" : "";// Return a string
     },
   },
 });
