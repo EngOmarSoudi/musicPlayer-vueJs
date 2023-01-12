@@ -32,7 +32,11 @@ npm install
 npm i -D tailwindcss postcss autoprefixer
 npx tailwindcss init -p
 ```
-
+## validation
+```sh
+npm i vee-validate
+npm install @vee-validate/rules
+```
 ### Compile and Hot-Reload for Development
 
 ```sh
