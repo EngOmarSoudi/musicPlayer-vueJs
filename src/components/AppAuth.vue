@@ -177,7 +177,7 @@ export default {
   data: () => ( {
     tab: "login",// tap is used to toggle between login and register form
     schema: {
-      name: 'required',
+      name: 'required|min:3|max:20|alpha_spaces',
       email: 'required|email',
       age: 'required|integer',
       password: 'required|min:6',

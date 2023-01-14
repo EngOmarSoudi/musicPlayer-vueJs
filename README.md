@@ -9,21 +9,27 @@ This template should help get you started developing with Vue 3 in Vite.
 ## Customize configuration
 
 See [Vite Configuration Reference](https://vitejs.dev/config/).
-## Creating The Project 
+
+## Creating The Project
+
 ```sh
 npm init vue@latest
-no 
+no
 no
 yes *
 ```
+
 ## install extensions
+
 Prettier - Code formatter v9.10.3 And
 ESLint v2.2.6
+
 ## in side settings.json
+
 "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
-  }
+"editor.codeActionsOnSave": {
+"source.fixAll.eslint": true
+}
 
 ## Project Setup
 
@@ -32,11 +38,16 @@ npm install
 npm i -D tailwindcss postcss autoprefixer
 npx tailwindcss init -p
 ```
+
 ## validation
+
 ```sh
 npm i vee-validate
 npm install @vee-validate/rules
 ```
+
+## create file name include and do the rules than go to auth page and do your compute functions there
+
 ### Compile and Hot-Reload for Development
 
 ```sh
@@ -76,6 +87,3 @@ npm run test:e2e
 ```sh
 npm run lint
 ```
-
-
-
