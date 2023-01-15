@@ -91,7 +91,7 @@
             </button>
           </form>
           <!-- Registration Form -->
-          <vee-form v-show="tab === 'register'" :validation-schema="schema">
+          <vee-form @submit="register" v-show="tab === 'register'" :validation-schema="schema">
             <!-- Name -->
             <div class="mb-3">
               <label class="inline-block mb-2">Name</label>
@@ -149,7 +149,8 @@
             <!-- Country -->
             <div class="mb-3">
               <label class="inline-block mb-2">Country</label>
-              <vee-field as="select"
+              <vee-field
+                as="select"
                 name="country"
                 class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
               >
@@ -209,6 +210,17 @@ export default {
       modalVisibility: "isOpen", // modalVisibility is used to close the modal
     }), // mapWritableState is used to map a state that can be changed
   },
+  methods:
+    {
+      // login method is used to login the user
+      login() {
+        this.modalVisibility = false;
+      },
+      // register method is used to register the user
+      register(value) {
+       console.log(value);
+      },
+    },
 };
 </script>
 
