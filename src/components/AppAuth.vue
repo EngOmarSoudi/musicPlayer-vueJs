@@ -54,7 +54,8 @@
                 href="#"
                 @click.prevent="tab = 'register'"
                 :class="{
-                  ' hover:text-white text-white bg-blue-600': tab === 'register',
+                  ' hover:text-white text-white bg-blue-600':
+                    tab === 'register',
                   'hover:text-white hover:bg-blue-200': tab === 'login',
                 }"
                 >Register</a
@@ -100,61 +101,75 @@
                 class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
                 placeholder="Enter Name"
               />
-              <ErrorMessage name="name" class="text-red-400"/>
+              <ErrorMessage name="name" class="text-red-400" />
             </div>
             <!-- Email -->
             <div class="mb-3">
               <label class="inline-block mb-2">Email</label>
-              <input
+              <vee-field
                 type="email"
+                name="email"
                 class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
                 placeholder="Enter Email"
               />
+              <ErrorMessage name="email" class="text-red-400" />
             </div>
             <!-- Age -->
             <div class="mb-3">
               <label class="inline-block mb-2">Age</label>
-              <input
+              <vee-field
                 type="number"
+                name="age"
                 class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
               />
+              <ErrorMessage name="age" class="text-red-400" />
             </div>
             <!-- Password -->
             <div class="mb-3">
               <label class="inline-block mb-2">Password</label>
-              <input
+              <vee-field
                 type="password"
+                name="password"
                 class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
                 placeholder="Password"
               />
+              <ErrorMessage name="password" class="text-red-400" />
             </div>
             <!-- Confirm Password -->
             <div class="mb-3">
               <label class="inline-block mb-2">Confirm Password</label>
-              <input
+              <vee-field
                 type="password"
+                name="password_confirmation"
                 class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
                 placeholder="Confirm Password"
               />
+              <ErrorMessage name="password_confirmation" class="text-red-400" />
             </div>
             <!-- Country -->
             <div class="mb-3">
               <label class="inline-block mb-2">Country</label>
-              <select
+              <vee-field as="select"
+                name="country"
                 class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
               >
                 <option value="USA">USA</option>
                 <option value="Mexico">Mexico</option>
                 <option value="Germany">Germany</option>
-              </select>
+                <option value="Antartica">Antartica</option>
+              </vee-field>
+              <ErrorMessage name="country" class="text-red-400" />
             </div>
             <!-- TOS -->
             <div class="mb-3 pl-6">
-              <input
+              <vee-field
                 type="checkbox"
+                name="tos"
+                value="1"
                 class="w-4 h-4 float-left -ml-6 mt-1 rounded"
               />
               <label class="inline-block">Accept terms of service</label>
+              <ErrorMessage name="tos" class="text-red-400 block" />
             </div>
             <button
               type="submit"
@@ -174,19 +189,18 @@ import { mapState, mapWritableState } from "pinia";
 import useModalStore from "@/stores/modal";
 export default {
   name: "AppAuth",
-  data: () => ( {
-    tab: "login",// tap is used to toggle between login and register form
+  data: () => ({
+    tab: "login", // tap is used to toggle between login and register form
     schema: {
-      name: 'required|min:3|max:20|alpha_spaces',
-      email: 'required|email',
-      age: 'required|integer',
-      password: 'required|min:6',
-      password_confirmation: 'required|same:password',
-      country: 'required',
-      terms: 'required|accepted'
-
-    }
-  } ), 
+      name: "required|min:3|max:20|alpha_spaces",
+      email: "required|email",
+      age: "required|min_value:18|max_value:130",
+      password: "required|min:8|max:30",
+      password_confirmation: "required|confirmed:@password",
+      country: "required|excluded:Antartica",
+      tos: "required",
+    },
+  }),
 
   computed: {
     // mapState is used to map a state that can't be changed
