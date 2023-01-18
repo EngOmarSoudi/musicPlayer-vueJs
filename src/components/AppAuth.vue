@@ -91,7 +91,12 @@
             </button>
           </form>
           <!-- Registration Form -->
-          <vee-form @submit="register" v-show="tab === 'register'" :validation-schema="schema">
+          <vee-form
+            @submit="register"
+            v-show="tab === 'register'"
+            :validation-schema="schema"
+            :initial-values="userDate"
+          >
             <!-- Name -->
             <div class="mb-3">
               <label class="inline-block mb-2">Name</label>
@@ -128,12 +133,23 @@
             <div class="mb-3">
               <label class="inline-block mb-2">Password</label>
               <vee-field
-                type="password"
                 name="password"
-                class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
-                placeholder="Password"
-              />
-              <ErrorMessage name="password" class="text-red-400" />
+                :bails="false"
+                v-slot="{ field, errors }"
+              >
+                <input
+                  type="password"
+                  name="password"
+                  class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
+                  placeholder="Password"
+                  v-bind="field"
+                />
+                <div class="text-red-600" v-for="error in errors" :key="error">
+                  {{ error }}
+                </div>
+              </vee-field>
+
+              <!-- <ErrorMessage name="password" class="text-red-400" /> -->
             </div>
             <!-- Confirm Password -->
             <div class="mb-3">
@@ -196,10 +212,19 @@ export default {
       name: "required|min:3|max:20|alpha_spaces",
       email: "required|email",
       age: "required|min_value:18|max_value:130",
-      password: "required|min:8|max:30",
+      password: "required|min:10|max:30|excluded:password",
       password_confirmation: "required|confirmed:@password",
-      country: "required|excluded:Antartica",
-      tos: "required",
+      country: "required|country_excluded:Antartica",
+      tos: "tos",
+    },
+    userDate: {
+      name: "",
+      email: "",
+      age: "",
+      password: "",
+      password_confirmation: "",
+      country: "USA",
+      tos: "",
     },
   }),
 
@@ -210,17 +235,16 @@ export default {
       modalVisibility: "isOpen", // modalVisibility is used to close the modal
     }), // mapWritableState is used to map a state that can be changed
   },
-  methods:
-    {
-      // login method is used to login the user
-      login() {
-        this.modalVisibility = false;
-      },
-      // register method is used to register the user
-      register(value) {
-       console.log(value);
-      },
+  methods: {
+    // login method is used to login the user
+    login() {
+      this.modalVisibility = false;
     },
+    // register method is used to register the user
+    register(value) {
+      console.log(value);
+    },
+  },
 };
 </script>
 
