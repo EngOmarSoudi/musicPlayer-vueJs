@@ -4,7 +4,7 @@ import {
   defineRule,
   ErrorMessage,
   configure,
-  validate,
+  // validate,
 } from "vee-validate";
 import {
   required,
@@ -37,8 +37,8 @@ export default {
       generateMessage: (ctx) => {
         const messages = {
           required: `The ${ctx.field} field is required.`,
-          min: `The ${ctx.field} field must be biger than ${ctx.value.length} characters.`,
-          max: `The ${ctx.field} field must be less than ${ctx.value.length} characters.`,
+          min: `The ${ctx.field} field must be biger.`,
+          max: `The ${ctx.field} field must be less.`,
           alpha_spaces: `The ${ctx.field} field may only contain alphabetic characters and spaces.`,
           email: `The ${ctx.field} field must be a valid email.`,
           min_value: `The ${ctx.field} field must be biger than ${ctx.value}.`,

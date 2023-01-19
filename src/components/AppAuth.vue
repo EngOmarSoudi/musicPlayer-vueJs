@@ -64,24 +64,28 @@
           </ul>
 
           <!-- Login Form -->
-          <form v-show="tab === 'login'">
+          <vee-form v-show="tab === 'login'" :validation-schema="LoginSchema" @submit="login">
             <!-- Email -->
             <div class="mb-3">
               <label class="inline-block mb-2">Email</label>
-              <input
+              <vee-field
                 type="email"
+                name="email"
                 class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
                 placeholder="Enter Email"
               />
+              <ErrorMessage name="email" class="text-red-400" />
             </div>
             <!-- Password -->
             <div class="mb-3">
               <label class="inline-block mb-2">Password</label>
-              <input
+              <vee-field
                 type="password"
+                name="password"
                 class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
                 placeholder="Password"
               />
+              <ErrorMessage name="password" class="text-red-400" />
             </div>
             <button
               type="submit"
@@ -89,7 +93,7 @@
             >
               Submit
             </button>
-          </form>
+          </vee-form>
           <!-- Registration Form -->
           <div
             class="text-white text-center font-bold p-4 rounded mb-4"
@@ -238,6 +242,10 @@ export default {
     reg_show_alert: false,
     reg_alert_variant: "bg-green-500",
     reg_alert_msg: "please wait...",
+    LoginSchema: {
+      email: "required|email",
+      password: "required|min:10|max:30",
+    },
   }),
 
   computed: {
@@ -249,7 +257,9 @@ export default {
   },
   methods: {
     // login method is used to login the user
-    login() {
+    login (value)
+    {
+      console.log(value);
       this.modalVisibility = false;
     },
     // register method is used to register the user
