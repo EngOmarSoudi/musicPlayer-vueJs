@@ -109,6 +109,7 @@
   </vee-form>
 </template>
 <script>
+import firebase from "@/includes/firebase";
 export default {
   name: "RegisterationForm",
   data() {
@@ -139,16 +140,29 @@ export default {
   },
   methods: {
     // register method is used to register the user
-    register(value) {
+    async register(value) {
       this.reg_in_submission = true;
       this.reg_show_alert = true;
       this.reg_alert_variant = "bg-green-500";
       this.reg_alert_msg = "please wait...";
+      let userCred = null;
+      try {
+        userCred = await firebase
+          .auth()
+          .createUserWithEmailAndPassword(value.email, value.password);
+      } catch ( error )
+      {
+        this.reg_in_submission = false;
+        this.reg_alert_variant = "bg-red-500";
+        this.reg_alert_msg = "an unexpected error occured. "+error.message;
+        // this.reg_alert_msg = error.message;
+        return;
+      }
 
       this.reg_alert_msg = "Registration Successful";
       this.reg_alert_variant = "bg-green-500";
       // this.modalVisibility = false;
-      console.log(value);
+      console.log(userCred);
     },
   },
 };

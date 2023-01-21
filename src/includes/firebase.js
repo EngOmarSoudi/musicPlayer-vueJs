@@ -1,5 +1,6 @@
-import firebase from "firebase/app";
-const firebaseConfig = {
+import firebase from "firebase/app";    // for core features
+import "firebase/auth";   // for authentication
+const firebaseConfig = {    // from Firebase console
   apiKey: "AIzaSyCPXshH-L2Y2-erJn6qX1ZPaeUmLhuEO0w",
   authDomain: "music-7d724.firebaseapp.com",
   projectId: "music-7d724",
@@ -8,4 +9,4 @@ const firebaseConfig = {
   appId: "1:431784229865:web:a95353c7a03c6574896978",
   measurementId: "G-RM4CP7K2WV",
 };
-export default firebase.initializeApp(firebaseConfig);
+export default firebase.initializeApp(firebaseConfig);   // Initialize Firebase
