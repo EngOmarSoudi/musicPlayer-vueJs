@@ -45,6 +45,10 @@ npx tailwindcss init -p
 npm i vee-validate
 npm install @vee-validate/rules
 ```
+##firebase
+```
+npm i firebase@8
+```
 
 ## create file name include and do the rules than go to auth page and do your compute functions there
 
