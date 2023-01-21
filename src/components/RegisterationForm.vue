@@ -109,7 +109,7 @@
   </vee-form>
 </template>
 <script>
-import firebase from "@/includes/firebase";
+import {auth,usersCollection} from "@/includes/firebase";
 export default {
   name: "RegisterationForm",
   data() {
@@ -118,7 +118,7 @@ export default {
         name: "required|min:3|max:20|alpha_spaces",
         email: "required|email",
         age: "required|min_value:18|max_value:130",
-        password: "required|min:10|max:30|excluded:password",
+        password: "required|min:5|max:30|excluded:password",
         password_confirmation: "required|confirmed:@password",
         country: "required|country_excluded:Antartica",
         tos: "tos",
@@ -147,8 +147,7 @@ export default {
       this.reg_alert_msg = "please wait...";
       let userCred = null;
       try {
-        userCred = await firebase
-          .auth()
+        userCred = await auth
           .createUserWithEmailAndPassword(value.email, value.password);
       } catch ( error )
       {
@@ -158,7 +157,21 @@ export default {
         // this.reg_alert_msg = error.message;
         return;
       }
-
+      try {
+        await usersCollection.add( {
+        name: value.name,
+        email: value.email,
+        age: value.age,
+        country: value.country,
+      });
+      } catch (error) {
+        this.reg_in_submission = false;
+        this.reg_alert_variant = "bg-red-500";
+        this.reg_alert_msg = "an unexpected error occured. "+error.message;
+        // this.reg_alert_msg = error.message;
+        return;
+      }
+      
       this.reg_alert_msg = "Registration Successful";
       this.reg_alert_variant = "bg-green-500";
       // this.modalVisibility = false;
