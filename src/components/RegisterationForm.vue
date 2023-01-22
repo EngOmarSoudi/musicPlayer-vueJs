@@ -109,9 +109,14 @@
   </vee-form>
 </template>
 <script>
-import {auth,usersCollection} from "@/includes/firebase";
+import { auth, usersCollection } from "@/includes/firebase";
+import { mapWritableState } from "pinia";
+import useUserStore from "@/stores/user";
 export default {
   name: "RegisterationForm",
+  computed: {
+    ...mapWritableState(useUserStore, ["userLoggedIn"]),
+  },
   data() {
     return {
       schema: {
@@ -171,7 +176,7 @@ export default {
         // this.reg_alert_msg = error.message;
         return;
       }
-      
+      this.userStore.userLoggedIn = true; 
       this.reg_alert_msg = "Registration Successful";
       this.reg_alert_variant = "bg-green-500";
       // this.modalVisibility = false;
