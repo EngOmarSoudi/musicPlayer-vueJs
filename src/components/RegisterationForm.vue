@@ -109,14 +109,10 @@
   </vee-form>
 </template>
 <script>
-import { auth, usersCollection } from "@/includes/firebase";
-import { mapWritableState } from "pinia";
+import { mapActions } from "pinia";
 import useUserStore from "@/stores/user";
 export default {
   name: "RegisterationForm",
-  computed: {
-    ...mapWritableState(useUserStore, ["userLoggedIn"]),
-  },
   data() {
     return {
       schema: {
@@ -145,42 +141,26 @@ export default {
   },
   methods: {
     // register method is used to register the user
-    async register(value) {
+    ...mapActions(useUserStore, { createUser: "register" }),
+    async register(values) {
       this.reg_in_submission = true;
       this.reg_show_alert = true;
       this.reg_alert_variant = "bg-green-500";
       this.reg_alert_msg = "please wait...";
-      let userCred = null;
+      // let userCred = null;
+
       try {
-        userCred = await auth
-          .createUserWithEmailAndPassword(value.email, value.password);
-      } catch ( error )
-      {
-        this.reg_in_submission = false;
-        this.reg_alert_variant = "bg-red-500";
-        this.reg_alert_msg = "an unexpected error occured. "+error.message;
-        // this.reg_alert_msg = error.message;
-        return;
-      }
-      try {
-        await usersCollection.add( {
-        name: value.name,
-        email: value.email,
-        age: value.age,
-        country: value.country,
-      });
+        await this.createUser(values);
       } catch (error) {
         this.reg_in_submission = false;
         this.reg_alert_variant = "bg-red-500";
-        this.reg_alert_msg = "an unexpected error occured. "+error.message;
-        // this.reg_alert_msg = error.message;
+        this.reg_alert_msg = "an unexpected error occured. " + error.message;
         return;
       }
-      this.userStore.userLoggedIn = true; 
+      
       this.reg_alert_msg = "Registration Successful";
       this.reg_alert_variant = "bg-green-500";
-      // this.modalVisibility = false;
-      console.log(userCred);
+     
     },
   },
 };
