@@ -49,7 +49,7 @@ export default {
       LoginSchema: {
         // LoginSchema is used to validate the login form
         email: "required|email", // email is required and should be a valid email
-        password: "required|min:10|max:30", // password is required and should be between 10 to 30 characters
+        password: "required", // password is required and should be between 10 to 30 characters
       },
       login_in_submission: false,
       login_show_alert: false,

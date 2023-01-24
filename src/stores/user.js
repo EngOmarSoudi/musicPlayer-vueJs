@@ -21,5 +21,10 @@ export default defineStore("user", {
         this.userLoggedIn = true; 
 
     },
+    async loginAuthintication ( value )
+    {
+      await auth.signInWithEmailAndPassword( value.email, value.password );
+      this.userLoggedIn = true;
+    }
   },
 });
