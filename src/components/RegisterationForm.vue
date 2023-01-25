@@ -160,7 +160,7 @@ export default {
       
       this.reg_alert_msg = "Registration Successful";
       this.reg_alert_variant = "bg-green-500";
-     
+      window.location.reload();
     },
   },
 };

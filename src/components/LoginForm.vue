@@ -75,7 +75,7 @@ export default {
       }
       this.login_alert_msg = "login Successful";
       this.login_alert_variant = "bg-green-500";
-      console.log(value);
+      window.location.reload();
       //   this.modalVisibility = false;// modalVisibility is used to hide the modal
     },
   },
