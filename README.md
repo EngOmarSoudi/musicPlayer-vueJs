@@ -51,7 +51,7 @@ npm i firebase@8
 ```
 
 ## create file name include and do the rules than go to auth page and do your compute functions there
-
+every thin is not been played
 ### Compile and Hot-Reload for Development
 
 ```sh
