@@ -2,7 +2,7 @@
   <section class="container mx-auto mt-6">
     <div class="md:grid md:grid-cols-3 md:gap-4">
       <div class="col-span-1">
-        <app-upload />
+        <app-upload ref="upload"/>
       </div>
       <div class="col-span-2">
         <div
@@ -131,12 +131,18 @@
 </template>
 <script>
 // import useUserStore from "@/stores/user";
-import AppUpload from '@/components/Upload.vue';
+import AppUpload from "@/components/Upload.vue";
 export default {
   name: "manage",
   components: {
     AppUpload,
   },
+  // beforeRouteLeave ( to, from, next )
+  // {
+  //   this.$refs.upload.cancelUploads();
+  //   next();
+  //   console.log("beforeRouteLeave Garud");
+  // },
   // beforeRouteEnter(to, from, next) {
   //   const store = useUserStore();
   //   if (store.userLoggedIn) {
@@ -144,7 +150,7 @@ export default {
   //   } else {
   //     next({ name: "home" });
   //   }
-    // console.log( 'beforeRouteEnter Garud' );
+  // console.log( 'beforeRouteEnter Garud' );
   // },
 };
 </script>
