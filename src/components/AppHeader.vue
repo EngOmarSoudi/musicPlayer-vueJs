@@ -16,7 +16,7 @@
         <ul class="flex flex-row mt-1">
           <!-- Navigation Links -->
           <li>
-            <router-link class="px-2 text-white" :to="{ name: 'about'}">
+            <router-link class="px-2 text-white" :to="{ name: 'about' }">
               About
             </router-link>
           </li>
@@ -58,7 +58,11 @@ export default {
     },
     async logout() {
       await this.userStore.sinOut();
-      window.location.reload();
+      // window.location.reload();
+      // console.log(this.$route)
+      if (this.$route.meta.requiresAuth) {
+        this.$router.push({ name: "home" });
+      }
     },
   },
 };
