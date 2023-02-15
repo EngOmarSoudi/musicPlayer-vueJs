@@ -2,10 +2,14 @@
   <!-- Composition Items -->
   <div class="border border-gray-200 p-3 mb-4 rounded">
     <div v-show="!showForm">
-      <h4 class="inline-block text-2xl font-bold">{{ song.modifiedName }}</h4>
+      <h4 class="inline-block text-2xl font-bold">
+        {{ song.modifiedName }}
+        
+      </h4>
       <button
         class="ml-1 py-1 px-2 text-sm rounded text-white bg-red-600 float-right"
-      >
+        @click.prevent="deleteSong"
+        >
         <i class="fa fa-times"></i>
       </button>
       <button
@@ -35,6 +39,7 @@
             type="text"
             class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
             placeholder="Enter Song Title"
+            @input="updateUnsavedFlag(true)"
           />
           <ErrorMessage name="modifiedName" class="text-red-600" />
         </div>
@@ -45,6 +50,7 @@
             type="text"
             class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
             placeholder="Enter Genre"
+            @input="updateUnsavedFlag(true)"
           />
           <ErrorMessage name="genre" class="text-red-600" />
         </div>
@@ -52,16 +58,19 @@
           type="submit"
           class="py-1.5 px-3 rounded text-white bg-green-600"
           :disabled="in_submition"
+
         >
           Submit
+          
         </button>
         <button
           type="button"
           class="py-1.5 px-3 rounded text-white bg-gray-600"
-          :disabled="in_submition"
           @click.prevent="showForm = !showForm"
+          :disabled="in_submition"
         >
           Go Back
+          
         </button>
       </vee-form>
     </div>
@@ -69,7 +78,7 @@
 </template>
 
 <script>
-import { songsCollection } from "@/includes/firebase.js";
+import { songCollection,storage } from "@/includes/firebase.js";
 export default {
   name: "Compositionitem",
   props: {
@@ -84,6 +93,13 @@ export default {
     index: {
       type: Number,
       required: true,
+    },
+    removeSong: {
+      type: Function,
+      required: true,
+    },
+    updateUnsavedFlag: {
+      type: Function,
     },
   },
   data() {
@@ -100,27 +116,50 @@ export default {
     };
   },
   methods: {
-     async  edit ( values )
-      {
-        // console.log(values);
+    async deleteSong ()
+    {
+      const storageRef = storage.ref();
+      const songRef = storageRef.child( `songs/${this.song.originalName}` );
+      try {
+        await songRef.delete();
+      }
+      catch(error) {
+        console.log(error);
+      }
+      try {
+        await songCollection.doc(this.song.docId).delete();
+      }
+      catch(error) {
+        console.log(error);
+      }
+      this.removeSong(this.index);
+      // this.$emit("deleteSong", this.index);
+     
+    },
+    async edit(values) {
+      // console.log("edit");
+      // console.log(values);
       this.in_submition = true;
       this.show_alert = true;
       this.alert_variant = "bg-blue-500";
       this.alert_message = "Please wait...! Updating song information.";
       try {
-        await songsCollection.doc(this.song.docID).update(values);
-      } catch (error) {
+        await songCollection.doc(this.song.docId).update( values );
+      }
+      catch(error) {
         this.in_submition = false;
         this.alert_variant = "bg-red-500";
-        this.alert_message = "Somthing went wrong...! please try again later.";
+        this.alert_message = "Somthing went wrong...! please try again later." + error;
         return;
       }
-      this.updateSong(this.index, values);
+      this.updateSong( this.index, values );
+      this.updateUnsavedFlag(false);
       this.in_submition = false;
       this.alert_variant = "bg-green-500";
       this.alert_message = "Song information updated successfully.";
     },
   },
+  
 };
 </script>
 
