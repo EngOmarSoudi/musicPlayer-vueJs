@@ -41,7 +41,7 @@
 </template>
 
 <script>
-import { storage, auth, songCollection } from "@/includes/firebase";
+import { storage, auth, songsCollection } from "@/includes/firebase";
 export default {
   name: "Upload",
   data() {
@@ -102,7 +102,7 @@ export default {
                             comment_count: 0,
                         };
                         song.url = await task.snapshot.ref.getDownloadURL();
-                        await songCollection.add( song );
+                        await songsCollection.add( song );
                         this.uploads[ uploadIndex ].variant = "bg-green-400";
                         this.uploads[ uploadIndex ].icon = "fas fa-check";
                         this.uploads[ uploadIndex ].text_class = "text-green-400";

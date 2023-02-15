@@ -17,5 +17,5 @@ const db = firebase.firestore(); // get firestore instance
 const auth = firebase.auth(); // get auth instance
 const storage = firebase.storage(); // get storage instance
 const usersCollection = db.collection("users"); // get users collection
-const songCollection = db.collection("songs"); // get songs collection
-export { db, auth, usersCollection,songCollection, storage }; // export firestore and auth
+const songsCollection = db.collection("songs"); // get songs collection
+export { db, auth, usersCollection,songsCollection, storage }; // export firestore and auth

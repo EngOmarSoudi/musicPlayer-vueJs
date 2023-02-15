@@ -17,9 +17,11 @@
           <div class="p-6">
             <!-- Composition Items -->
             <composition-item
-              v-for="song in songs"
+              v-for="( song,i) in songs"
               :key="song.docID"
               :song="song"
+              :updateSong="updateSong"
+              :index="i"
             />
           </div>
         </div>
@@ -30,7 +32,7 @@
 <script>
 // import useUserStore from "@/stores/user";
 import AppUpload from "@/components/Upload.vue";
-import { songCollection, auth } from "@/includes/firebase";
+import { songsCollection, auth } from "@/includes/firebase";
 import CompositionItem from "@/components/CompositionItem.vue";
 export default {
   name: "manage",
@@ -44,16 +46,22 @@ export default {
     };
   },
   async created() {
-    const snapshot = await songCollection
+    const snapshot = await songsCollection
       .where("uid", "==", auth.currentUser.uid)
       .get();
-    snapshot.forEach((doc) => {
+    snapshot.forEach((document) => {
       const song = {
-        ...doc.data(),
-        docId: doc.id,
+        ...document.data(),
+        docId: document.id,
       };
       this.songs.push(song);
     });
+  },
+  methods: {
+    updateSong(i, values) {
+      this.songs[i].modifiedName = values.modifiedName;
+      this.songs[i].genre = values.genre;
+    },
   },
   // beforeRouteLeave ( to, from, next )
   // {

@@ -16,6 +16,13 @@
       </button>
     </div>
     <div v-show="showForm">
+      <div
+        class="text-white text-center font-bold p-4 mb-4"
+        v-if="show_alert"
+        :class="alert_variant"
+      >
+        {{ alert_message }}
+      </div>
       <vee-form
         :validation-schema="schema"
         :initial-values="song"
@@ -44,12 +51,15 @@
         <button
           type="submit"
           class="py-1.5 px-3 rounded text-white bg-green-600"
+          :disabled="in_submition"
         >
           Submit
         </button>
         <button
           type="button"
           class="py-1.5 px-3 rounded text-white bg-gray-600"
+          :disabled="in_submition"
+          @click.prevent="showForm = !showForm"
         >
           Go Back
         </button>
@@ -59,11 +69,20 @@
 </template>
 
 <script>
+import { songsCollection } from "@/includes/firebase.js";
 export default {
   name: "Compositionitem",
   props: {
     song: {
       type: Object,
+      required: true,
+    },
+    updateSong: {
+      type: Function,
+      required: true,
+    },
+    index: {
+      type: Number,
       required: true,
     },
   },
@@ -74,11 +93,32 @@ export default {
         modifiedName: "required",
         genre: "alpha_spaces",
       },
+      in_submition: false,
+      show_alert: false,
+      alert_variant: "bg-blue-500",
+      alert_message: "Please wait...! Updating song information.",
     };
   },
   methods: {
-    edit(values) {
-      console.log(values);
+     async  edit ( values )
+      {
+        // console.log(values);
+      this.in_submition = true;
+      this.show_alert = true;
+      this.alert_variant = "bg-blue-500";
+      this.alert_message = "Please wait...! Updating song information.";
+      try {
+        await songsCollection.doc(this.song.docID).update(values);
+      } catch (error) {
+        this.in_submition = false;
+        this.alert_variant = "bg-red-500";
+        this.alert_message = "Somthing went wrong...! please try again later.";
+        return;
+      }
+      this.updateSong(this.index, values);
+      this.in_submition = false;
+      this.alert_variant = "bg-green-500";
+      this.alert_message = "Song information updated successfully.";
     },
   },
 };
