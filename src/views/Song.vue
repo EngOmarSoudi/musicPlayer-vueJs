@@ -34,8 +34,8 @@
           v-if="comment_show_alert"
           :class="comment_alert_variant"
         >
-        {{ comment_alert_message }}
-    </div>
+          {{ comment_alert_message }}
+        </div>
         <vee-form :validation-schema="schema" @submit="addComment">
           <vee-field
             as="textarea"
@@ -140,14 +140,14 @@
 </template>
 
 <script>
-import { songCollection } from "@/includes/firebase";
+import { songCollection, commentsCollection , auth } from "@/includes/firebase";
 export default {
   name: "Song",
   data() {
     return {
       song: {},
       schema: {
-        comment: "reqired|min:3",
+        comment: "required|min:3",
       },
       comment_in_submission: false,
       comment_show_alert: false,
@@ -156,8 +156,8 @@ export default {
     };
   },
   async created() {
-    const songId = this.$route.params.id;
-    const docSnapshot = await songCollection.doc(songId).get();
+    
+    const docSnapshot = await songCollection.doc(this.$route.params.id).get();
     if (!docSnapshot.exists) {
       this.$router.push({ name: "home" });
       return;
@@ -166,13 +166,26 @@ export default {
   },
 
   methods: {
-      async addComment ( values )
-      {
-          this.comment_in_submission = true;
-          this.comment_show_alert = true;
-          this.comment_alert_variant = "bg-blue-500";
-          this.comment_alert_message = "please wait..! your comment is being submitted.";
-          
+    async addComment(values , { resetForm }) {
+      this.comment_in_submission = true;
+      this.comment_show_alert = true;
+      this.comment_alert_variant = "bg-blue-500";
+      this.comment_alert_message =
+        "please wait..! your comment is being submitted.";
+
+      const comment = {
+        content: values.comment,
+        datePosted: new Date().toString,
+        sid: this.$route.params.id,
+        name: auth.currentUser.displayName,
+        uid: auth.currentUser.uid,
+      };
+      await commentsCollection.add( comment );
+
+      this.comment_in_submission = false;
+      this.comment_alert_variant = "bg-green-500";
+      this.comment_alert_message = "your comment has been submitted.";
+      resetForm();
     },
   },
 };
