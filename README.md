@@ -45,9 +45,17 @@ npx tailwindcss init -p
 npm i vee-validate
 npm install @vee-validate/rules
 ```
+
 ##firebase
+
 ```
 npm i firebase@8
+```
+
+##install the musicPlayer Howler
+
+```
+npm i howler
 ```
 
 ## create file name include and do the rules than go to auth page and do your compute functions there
