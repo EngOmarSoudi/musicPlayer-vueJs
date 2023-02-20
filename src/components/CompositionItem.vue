@@ -33,7 +33,7 @@
         @submit="edit"
       >
         <div class="mb-3">
-          <label class="inline-block mb-2">Song Title</label>
+          <label class="inline-block mb-2"> {{ $t("manage.songtitle") }}</label>
           <vee-field
             name="modifiedName"
             type="text"
@@ -44,7 +44,7 @@
           <ErrorMessage name="modifiedName" class="text-red-600" />
         </div>
         <div class="mb-3">
-          <label class="inline-block mb-2">Genre</label>
+          <label class="inline-block mb-2">{{ $t("manage.songgenre") }}</label>
           <vee-field
             name="genre"
             type="text"
@@ -60,7 +60,7 @@
           :disabled="in_submition"
 
         >
-          Submit
+          {{ $t("manage.submit")  }}
           
         </button>
         <button
@@ -69,7 +69,7 @@
           @click.prevent="showForm = !showForm"
           :disabled="in_submition"
         >
-          Go Back
+          {{ $t("manage.goback")   }}
           
         </button>
       </vee-form>

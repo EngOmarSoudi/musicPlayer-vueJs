@@ -1,7 +1,33 @@
 {
-    "home": {
-      "grating":"Welcome to the home page" ,
-      "description": "This is the home page"
-    }
+  "home": {
+    "grating": "Bienvenue sur la page d'accueil",
+    "description": "Ceci est la page d'accueil de mon site web pour écouter de la musique",
+    "songs": "Chansons"
+  },
+  "manage": {
+    "mysongs": "Mes chansons",
+    "upload": "Téléchargez votre chanson",
+    "dropfile": "Déposez votre dossier ici",
+    "uploadbtn": "Télécharger",
+    "songtitle":"Titre de la chanson",
+    "songgenre":"Genre de la chanson",
+    "submit":"Soumettre",
+    "goback":"Retourner"
+  },
+  "header": {
+    "music": "Musique",
+    "home": " Accueil",
+    "manage": "Gérer",
+    "about": "À propos",
+    "login": "S'identifier",
+    "logout": "Se déconnecter",
+    "register": "S'inscrire",
+    "profile": "Profil",
+    "search": "Chercher",
+    "searchbtn": "Chercher",
+    "searchplaceholder": "Rechercher des chansons"
+  },
+  "song": {
+    "comment_count": "No Commentaires |1 Commentaire| Commentaires {count}" 
   }
-  
+}

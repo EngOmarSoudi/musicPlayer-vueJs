@@ -4,7 +4,7 @@ import sp from "@/locals/sp.json";
 import ar from "@/locals/ar.json";
 import fr from "@/locals/fr.json";
 export default createI18n({
-  locale: "ar",
+  locale: "en",
   fallbackLocale: "en",
   messages: {
     en,

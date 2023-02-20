@@ -8,7 +8,7 @@
         :to="{ name: 'home' }"
         exact-active-class="no-active"
       >
-        Music
+       {{ $t("header.music")}}
       </router-link>
 
       <div class="flex flex-grow items-center">
@@ -17,23 +17,23 @@
           <!-- Navigation Links -->
           <li>
             <router-link class="px-2 text-white" :to="{ name: 'about' }">
-              About
+              {{ $t("header.about")}}
             </router-link>
           </li>
           <li v-if="!userStore.userLoggedIn">
             <a @click.prevent="toggleAuthModal" class="px-2 text-white" href="#"
-              >Login / Register</a
+              >{{ $t("header.login") }} / {{ $t("header.register") }}</a
             >
           </li>
           <template v-else>
             <li>
               <router-link class="px-2 text-white" :to="{ name: 'manage' }"
-                >Manage</router-link
+                >{{ $t("header.manage") }}</router-link
               >
             </li>
             <li>
               <a class="px-2 text-white" href="#" @click.prevent="logout"
-                >Logout</a
+                >{{ $t("header.logout") }}</a
               >
             </li>
           </template>

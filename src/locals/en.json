@@ -1,6 +1,33 @@
 {
   "home": {
-    "grating": "Welcome to the home page" ,
-    "description": "This is the home page of my website for lesting music"
+    "grating": "Welcome to the home page",
+    "description": "This is the home page of my website for lesting music",
+    "songs": "songs"
+  },
+  "manage": {
+    "mysongs": "My songs",
+    "upload": "Upload your song",
+    "dropfile": "Drop your file here",
+    "uploadbtn": "upload",
+    "songtitle": "Song title",
+    "songgenre": "Song genre",
+    "submit": "Submit",
+    "goback": "Go back"
+  },
+  "header": {
+    "music": "Music",
+    "home": "Home",
+    "manage": "Manage",
+    "about": "About",
+    "login": "Login",
+    "logout": "Logout",
+    "register": "Register",
+    "profile": "Profile",
+    "search": "Search",
+    "searchbtn": "Search",
+    "searchplaceholder": "Search for a song"
+  },
+  "song": {
+    "comment_count": "No comments|1 comment|{count} Comments"
   }
 }

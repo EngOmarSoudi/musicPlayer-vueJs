@@ -1,7 +1,7 @@
 <template>
   <div class="bg-white rounded border border-gray-200 relative flex flex-col">
     <div class="px-6 pt-6 pb-5 font-bold border-b border-gray-200">
-      <span class="card-title">Upload</span>
+      <span class="card-title">{{ $t("manage.upload") }}</span>
       <i class="fas fa-upload float-right text-green-400 text-2xl"></i>
     </div>
     <div class="p-6">
@@ -17,9 +17,21 @@
         @dragleave.prevent.stop="is_dragover = false"
         @drop.prevent.stop="upload($event)"
       >
-        <h5>Drop your files here</h5>
+        <h5>{{ $t("manage.dropfile") }}</h5>
       </div>
-      <input type="file" multiple @change="upload($event)" />
+
+      <label>
+        <button class="D" onclick="document.getElementById('getFile').click()">{{$t("manage.uploadbtn") }}
+        </button>
+        <input
+          type="file"
+          id="getFile"
+          style="display: none"
+          multiple
+          @change="upload($event)"
+        />
+      </label>
+      <!-- <input id="file" type="file" multiple @change="upload($event)" /> -->
       <hr class="my-6" />
       <!-- Progess Bars -->
       <div class="mb-4" v-for="upload in uploads" :key="upload.name">
@@ -97,7 +109,7 @@ export default {
               comment_count: 0,
             };
             song.url = await task.snapshot.ref.getDownloadURL();
-            const songRef = await songCollection.add( song );
+            const songRef = await songCollection.add(song);
             const songSnapshot = await songRef.get();
             this.addSong(songSnapshot);
             this.uploads[uploadIndex].variant = "bg-green-400";
@@ -120,6 +132,28 @@ export default {
     });
   },
 };
+
 </script>
 
-<style></style>
+<style>
+
+.D {
+  display: block;
+  width: 120px;
+  height: 30px;
+  border: 1 solid;
+  padding-left: auto;
+  padding-right: auto;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 1.25rem;
+  background-image: linear-gradient(to right, var(--tw-gradient-stops));
+  background-color: #2563eb;
+  background-color: #059669;
+  color: #ffffff;
+  font-weight: 600;
+  border-radius: 9999px;
+  border-width: 0;
+  text-transform: uppercase;
+}
+</style>
