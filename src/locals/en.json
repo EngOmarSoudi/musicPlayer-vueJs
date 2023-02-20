@@ -28,6 +28,6 @@
     "searchplaceholder": "Search for a song"
   },
   "song": {
-    "comment_count": "No comments|1 comment|{count} Comments"
+    "comment_count": "No comments | 1 comment | {count} Comments"
   }
 }
