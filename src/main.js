@@ -8,13 +8,19 @@ import "./assets/base.css";
 import "./assets/main.css";
 import veeValidatePlugin from "./includes/validation.js";
 import { auth } from "./includes/firebase";
+import  Icon from "@/directives/icon";
+import Iconsecondry from "@/directives/icon-secondry";
+import i18n from "./includes/i18n";
 let app;
 auth.onAuthStateChanged(() => {
   if (!app) {
     app = createApp(App);
     app.use(createPinia());
     app.use(router);
-    app.use(veeValidatePlugin);
+    app.use( veeValidatePlugin );
+    app.use( i18n );
+    app.directive( "icon", Icon );
+    app.directive( "icon-secondry", Iconsecondry );
     app.mount("#app");
   }
 });

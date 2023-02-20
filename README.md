@@ -57,6 +57,11 @@ npm i firebase@8
 ```
 npm i howler
 ```
+##install the in18 for translation popusoes
+
+```
+npm i vue-i18n@9
+```
 
 ## create file name include and do the rules than go to auth page and do your compute functions there
 
