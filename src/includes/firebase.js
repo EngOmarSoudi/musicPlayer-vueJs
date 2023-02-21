@@ -16,6 +16,9 @@ firebase.initializeApp(firebaseConfig); // Initialize Firebase
 const db = firebase.firestore(); // get firestore instance
 const auth = firebase.auth(); // get auth instance
 const storage = firebase.storage(); // get storage instance
+db.enablePersistence().catch((error) => {
+  console.log("firebase persisting error" + error);
+}); // enable offline persistence
 const usersCollection = db.collection("users"); // get users collection
 const songCollection = db.collection("songs"); // get songs collection
 const commentsCollection = db.collection("comments"); // get comments collection

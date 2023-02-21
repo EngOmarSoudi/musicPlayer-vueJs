@@ -62,6 +62,12 @@ npm i howler
 ```
 npm i vue-i18n@9
 ```
+##install web progressiv app to install in mobile
+
+```
+npm i vite-plugin-pwa -D
+npm run build
+```
 
 ## create file name include and do the rules than go to auth page and do your compute functions there
 

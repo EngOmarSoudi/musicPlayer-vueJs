@@ -74,6 +74,18 @@ export default {
         if (file.type !== "audio/mpeg") {
           return;
         }
+        if ( !navigator.onLine )
+        {
+          this.uploads.push( {
+            task: {},
+            current_progress: 100,
+            name: file.name,  
+            variant: "bg-red-400",
+            icon: "fas fa-exclamation-triangle",
+            text_class: "text-red-400",
+          })
+          return;
+        }
         const storageRef = storage.ref(); // Create a storage reference from our storage service music-7d724.appspot.com
         const songsRef = storageRef.child(`songs/${file.name}`); // Create a reference to 'mountains.mp3'
         const task = songsRef.put(file); // Create a reference to 'songs/mountains.mp3'
