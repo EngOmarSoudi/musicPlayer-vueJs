@@ -42,18 +42,15 @@
         <ul class="ml-auto flex">
           <label for="locale" class="text-white mr-5 mt-2">Langage</label>
           <select
-            @click="changeLocale(value)"
+            @click="changeLocale"
             v-model="currentloca"
             class="bg-gray-800 border border-gray-900 text-white text-sm rounded-lg focus:ring-blue-900 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           >
-            <option selected value="ar">Arabic</option>
+            <option  value="ar">Arabic</option>
             <option value="en">English</option>
             <option value="fr">Franch</option>
             <option value="sp">Spanish</option>
           </select>
-          
-
-
         </ul>
       </div>
     </nav>
@@ -75,14 +72,12 @@ export default {
   },
   computed: {
     ...mapStores(useModalStore, useUserStore),
-    // currentLocale() {
-    //   return this.$i18n.locale;
-    // },
+    
   },
   methods: {
     toggleAuthModal() {
       this.modalStore.isOpen = !this.modalStore.isOpen;
-      // console.log(this.modalStore.isOpen);
+      
     },
     async logout() {
       await this.userStore.sinOut();
@@ -92,10 +87,8 @@ export default {
         this.$router.push({ name: "home" });
       }
     },
-    changeLocale(value) {
-      console.log(this.$i18n.locale);
-      console.log(value);
-      console.log(this.currentloca);
+    changeLocale() {
+      
       if (this.currentloca === "en") {
         this.$i18n.locale = "en";
       }
