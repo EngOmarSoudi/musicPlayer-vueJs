@@ -29,5 +29,26 @@
   },
   "song": {
     "comment_count": "No comments | 1 comment | {count} Comments"
+  },
+  "register": {
+    "youracount": " Your Acoount",
+    "title": "Register",
+    "username": "Username",
+    "email": "Email",
+    "age": "Age",
+    "password": "Password",
+    "password_confirmation": "Confirm password",
+    "submit": "Register",
+    "login": "Login",
+    "goback": "Go back",
+    "country": "Country",
+    "tos": "terms of service",
+    "accept_tos": "I accept Music's {0}"
+  },
+  "comment":{
+    "comment": "Comment",
+    "submit": "Submit",
+    "oldest": "Oldest",
+    "latest": "Latest"
   }
 }

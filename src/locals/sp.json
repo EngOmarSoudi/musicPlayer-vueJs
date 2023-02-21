@@ -17,6 +17,7 @@
   "header": {
     "music": "Música",
     "home": "Inicio",
+    "about": "Acerca de",
     "manage": "Administrar",
     "login": "Iniciar sesión",
     "logout": "Cerrar sesión",
@@ -28,5 +29,26 @@
   },
   "song": {
     "comment_count": "No  comentarios |1 el comentario| comentarios {count}" 
+  },
+  "register": {
+    "youracount": "Tu cuenta ",
+    "title": "Registro",
+    "username": "Nombre de usuario",
+    "email": "Correo electrónico",
+    "age": "Edad",
+    "password": "Contraseña",
+    "password_confirmation": "Confirmar contraseña ",
+    "submit": "Registro",
+    "login": "Iniciar sesión",
+    "goback": "Volver",
+    "country": "país",
+    "tos": "términos de servicio",	
+    "accept_tos": " Acepto Music's {0}"
+  },
+  "comment":{
+    "comment": "Comentario",
+    "submit": "Enviar",
+    "oldest": "Más antiguo",
+    "latest": "Más reciente"
   }
 }

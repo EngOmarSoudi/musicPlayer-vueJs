@@ -24,7 +24,7 @@
         <div class="py-4 text-left px-6">
           <!--Title-->
           <div class="flex justify-between items-center pb-4">
-            <p class="text-2xl font-bold">Your Account</p>
+            <p class="text-2xl font-bold">{{ $t("register.youracount") }}</p>
             <!-- Modal Close Button -->
             <div
               class="modal-close cursor-pointer z-50"
@@ -45,7 +45,7 @@
                   ' hover:text-white text-white bg-blue-600': tab === 'login',
                   'hover:text-white hover:bg-blue-200': tab === 'register',
                 }"
-                >Login</a
+                >{{ $t("register.login") }}</a
               >
             </li>
             <li class="flex-auto text-center">
@@ -58,7 +58,7 @@
                     tab === 'register',
                   'hover:text-white hover:bg-blue-200': tab === 'login',
                 }"
-                >Register</a
+                >{{ $t("register.title") }}</a
               >
             </li>
           </ul>

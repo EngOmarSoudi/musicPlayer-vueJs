@@ -15,10 +15,11 @@
         >
           <i class="fas fa-play"></i>
         </button>
-        <div class="z-50 text-left ml-8">
+        
+        <div class="z-10 text-left ml-8 float-none ">
           <!-- Song Info -->
-          <div class="text-3xl font-bold">{{ song.modifiedName }}</div>
-          <div>{{ song.genre }}</div>
+          <div class="text-3xl font-bold " >{{ song.modifiedName }}</div>
+          <div>{{ song.genre }} </div>
         </div>
       </div>
     </section>
@@ -61,7 +62,7 @@
               type="submit"
               class="py-1.5 px-3 rounded text-white bg-green-600 block"
             >
-              Submit
+            {{ $t("comment.submit") }}
             </button>
           </vee-form>
           <!-- Sort Comments -->
@@ -69,8 +70,8 @@
             v-model="sort"
             class="block mt-4 py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
           >
-            <option value="1">Latest</option>
-            <option value="2">Oldest</option>
+            <option value="1">{{ $t("comment.latest") }}</option>
+            <option value="2">{{ $t("comment.oldest") }}</option>
           </select>
         </div>
       </div>

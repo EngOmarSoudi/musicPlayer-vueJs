@@ -9,10 +9,10 @@
     "upload": "Téléchargez votre chanson",
     "dropfile": "Déposez votre dossier ici",
     "uploadbtn": "Télécharger",
-    "songtitle":"Titre de la chanson",
-    "songgenre":"Genre de la chanson",
-    "submit":"Soumettre",
-    "goback":"Retourner"
+    "songtitle": "Titre de la chanson",
+    "songgenre": "Genre de la chanson",
+    "submit": "Soumettre",
+    "goback": "Retourner"
   },
   "header": {
     "music": "Musique",
@@ -28,6 +28,27 @@
     "searchplaceholder": "Rechercher des chansons"
   },
   "song": {
-    "comment_count": "No Commentaires |1 Commentaire| Commentaires {count}" 
+    "comment_count": "No Commentaires |1 Commentaire| Commentaires {count}"
+  },
+  "register": {
+    "youracount": "Votre compte",
+    "title": "enregistrer",
+    "username": "Nom d'utilisateur",
+    "email": "Email",
+    "age": "Âge",
+    "password": "Mot de passe",
+    "password_confirmation": "Confirmez le mot de passe",
+    "submit": "enregistrer",
+    "login": "S'identifier",
+    "goback": "Retourner",
+    "country": "Pays",
+    "tos": "conditions d'utilisation ",
+    "accept_tos": "J'accepte les musiques {0}"
+  },
+  "comment":{
+    "comment": "Commentaire",
+    "submit": "Soumettre",
+    "oldest": "Plus ancien",
+    "latest": "Dernier"
   }
 }

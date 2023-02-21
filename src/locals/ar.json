@@ -29,5 +29,26 @@
   },
   "song": {
     "comment_count": " لايوجد تعليقات | تعليق واحد|تعليقات {count}"
+  },
+  "register": {
+    "youracount": "حسابك",
+    "title": " تسجيل",
+    "username": "اسم المستخدم",
+    "email": "البريد الإلكتروني",
+    "age": "العمر",
+    "password": "كلمة المرور",
+    "password_confirmation": "تأكيد كلمة المرور",
+    "submit": "تسجيل",
+    "login": "تسجيل الدخول",
+    "goback": "العودة",
+    "country": "البلد",
+    "tos": "شروط الاستخدام",	
+    "accept_tos": " انا اوافق على {0}"
+  },
+  "comment":{
+    "comment": "تعليق",
+    "submit": "إرسال",
+    "oldest": "الأقدم",
+    "latest": "الأحدث"
   }
 }
