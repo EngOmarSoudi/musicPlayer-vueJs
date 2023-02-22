@@ -68,7 +68,17 @@ npm i vue-i18n@9
 npm i vite-plugin-pwa -D
 npm run build
 ```
+##install progress bar
 
+```
+npm i nprogress
+```
+##install tool of hosting vercel
+
+```
+npm i -g vercel
+vercel login
+```
 ## create file name include and do the rules than go to auth page and do your compute functions there
 
 ### Compile and Hot-Reload for Development

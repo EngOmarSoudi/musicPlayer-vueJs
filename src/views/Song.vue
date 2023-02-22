@@ -15,11 +15,11 @@
         >
           <i class="fas fa-play"></i>
         </button>
-        
-        <div class="z-10 text-left ml-8 float-none ">
+
+        <div class="z-10 text-left ml-8 float-none">
           <!-- Song Info -->
-          <div class="text-3xl font-bold " >{{ song.modifiedName }}</div>
-          <div>{{ song.genre }} </div>
+          <div class="text-3xl font-bold">{{ song.modifiedName }}</div>
+          <div>{{ song.genre }}</div>
         </div>
       </div>
     </section>
@@ -62,7 +62,7 @@
               type="submit"
               class="py-1.5 px-3 rounded text-white bg-green-600 block"
             >
-            {{ $t("comment.submit") }}
+              {{ $t("comment.submit") }}
             </button>
           </vee-form>
           <!-- Sort Comments -->
@@ -129,17 +129,19 @@ export default {
       });
     },
   },
-  async created() {
-    const docSnapshot = await songCollection.doc(this.$route.params.id).get();
-    if (!docSnapshot.exists) {
-      this.$router.push({ name: "home" });
-      return;
-    }
-    const { sort } = this.$route.query;
-    this.sort = sort === "1" || sort === "2" ? sort : "1";
+  async beforeRouteEnter(to, from, next) {
+    const docSnapshot = await songCollection.doc(to.params.id).get();
+    next((vm) => {
+      if (!docSnapshot.exists) {
+        vm.$router.push({ name: "home" });
+        return;
+      }
+      const { sort } = vm.$route.query;
+      vm.sort = sort === "1" || sort === "2" ? sort : "1";
 
-    this.song = docSnapshot.data();
-    this.getComments();
+      vm.song = docSnapshot.data();
+      vm.getComments();
+    });
   },
 
   methods: {
