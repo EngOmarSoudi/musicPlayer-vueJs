@@ -49,7 +49,7 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes,
-  linkExactActiveClass: "text-yellow-500",
+  linkExactActiveClass: "text-green-500 border-b-4 border-green-500",
 });
 router.beforeEach((to, from, next) => {
   // console.log(to.meta);
