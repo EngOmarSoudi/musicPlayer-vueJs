@@ -173,7 +173,7 @@ export default {
       resetForm();
     },
     async getComments() {
-      // console.log("getComments");
+      console.log("getComments");
       const snapshots = await commentsCollection
         .where("sid", "==", this.$route.params.id)
         .get();

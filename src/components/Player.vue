@@ -29,12 +29,15 @@
         >
           <i class="fas fa-circle"></i>
         </span>
-        <!-- Player Progress Bar-->
-        <span
+        
+      <span
           class="block h-2 rounded bg-gradient-to-r from-green-500 to-green-400"
           :style="{ width: playerProgress }"
         ></span>
       </div>
+
+      
+
       <!-- Duration -->
       <div class="player-duration">{{ duration }}</div>
     </div>

@@ -18,6 +18,7 @@ export default defineStore("player", {
       this.sound = new Howl({
         src: [song.url],
         html5: true,
+        loop: true,
       });
       this.sound.play();
       this.sound.on("play", () => {

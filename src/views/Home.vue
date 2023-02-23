@@ -56,7 +56,7 @@ export default {
   data() {
     return {
       songs: [],
-      maxPerPage: 4,
+      maxPerPage: 20,
       pendingRequest: false,
     };
   },
@@ -79,7 +79,7 @@ export default {
       const { scrollTop, offsetHeight } = document.documentElement;
       const { innerHeight } = window;
       const bottomOfWindow =
-        Math.round(scrollTop) + innerHeight == offsetHeight;
+        Math.round(scrollTop) + innerHeight > offsetHeight - 100;
       if (bottomOfWindow) {
         this.getSongs();
       }
@@ -105,7 +105,6 @@ export default {
           .limit(this.maxPerPage)
           .get();
       }
-
       snapshots.forEach((document) => {
         this.songs.push({ docId: document.id, ...document.data() });
       });
