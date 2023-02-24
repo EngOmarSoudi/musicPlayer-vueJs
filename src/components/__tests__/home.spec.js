@@ -13,8 +13,15 @@ describe("Home.vue", () => {
           songs,
         };
       },
+      global: {
+        mocks: { $t: (msg) => msg },
+      },
     });
     const items = component.findAllComponents(SongItem);
-    expect(items).toHaveLength(songs.length);
+    expect( items ).toHaveLength( songs.length );
+    items.forEach( ( item, index ) =>
+    { 
+      expect( item.props().song).toStrictEqual( songs[ index ] );
+    });
   });
 });
