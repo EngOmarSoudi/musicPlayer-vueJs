@@ -82,10 +82,13 @@ npm i nprogress
 ```
 npm i -g vercel
 vercel login
+vercel
+vercel --prod
 ```
 ##generate test report in the command line
 ```
 npm i -D @vitest/ui
+npm run test:unit
 ```
 
 ## create file name include and do the rules than go to auth page and do your compute functions there
